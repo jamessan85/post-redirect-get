@@ -20,6 +20,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  if (!process.env.NODE_ENV) {
+    return next(createError(500, 'Please create an env file'));
+  }
+  return next();
+});
+
 app.use(session({
   secret: config.sessionSecret,
   resave: false,

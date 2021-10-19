@@ -3,9 +3,13 @@
 ### Description
 Web app that does a post-redirect-get that takes in a text field and validates the length is correct. 
 
-### Installtion
+### Installation
 
 Clone the repository and run `npm i` inside the folder.
+
+A .env will need to be created and contain 
+
+`NODE_ENV=development`
 
 ### Running the application
 
