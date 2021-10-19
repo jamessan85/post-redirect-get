@@ -14,11 +14,21 @@ describe('API routes', () => {
     });
   });
   describe('POST /', () => {
-    it('Should return a 302 redirect on success', async () => {
+    it('Should return a 302 redirect on success, max value allowed 10', async () => {
       const res = await request(app)
         .post('/')
         .send({
-          text: '241412414',
+          text: '2414124141',
+        })
+        .set('Cookie', cookie)
+        .expect(302);
+      assert.deepStrictEqual(res.text, 'Found. Redirecting to /success');
+    });
+    it('Should return a 302 redirect on success, min value allowed 1', async () => {
+      const res = await request(app)
+        .post('/')
+        .send({
+          text: '2',
         })
         .set('Cookie', cookie)
         .expect(302);

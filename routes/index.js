@@ -38,7 +38,7 @@ router.post('/', (req, res, next) => {
     const formData = req.body;
     req.session.form = formData;
 
-    validate.body('text', formData.text).required().minlength(2).maxlength(10);
+    validate.body('text', formData.text).required().minlength(1).maxlength(10);
 
     if (validate.errors.length) {
       return res.render('index', {
