@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Please submit some text
+  form(action="/", method="post")
+    input(type="text", name="text" value=`${form && form.text ? form.text : ''}`) 
+    if errors
+      div(data-cy='error-container')
+        each val in errors
+          p(style={'background-color': 'red', color: 'white'})= val.message
+    button(type="submit") Submit
